@@ -1,5 +1,6 @@
 ﻿namespace MiracleHides.Factory.Generator.LexicalAnalysis
 {
+    using System.Threading.Tasks;
     using MiracleHides.Factory.Generator.Contracts.LexicalAnalysis;
     using MiracleHides.Factory.Generator.Contracts.Models.JsonSpecification;
     using MiracleHides.Factory.Generator.Converter;
@@ -13,10 +14,11 @@
         ///     Execute the lexical analysis.
         /// </summary>
         /// <param name="content">The specification in json file format.</param>
-        /// <returns>A parsed <see cref="ISpecification"/>.</returns>
-        public ISpecification Execute(string content)
+        /// <returns>A <see cref="Task{T}"/> whose result is a parsed <see cref="ISpecification"/>.</returns>
+        public Task<ISpecification> Execute(string content)
         {
-            return SpecificationJsonConverter.Deserialize(content);
+            var specification = SpecificationJsonConverter.Deserialize(content);
+            return Task.FromResult<ISpecification>(specification);
         }
     }
 }

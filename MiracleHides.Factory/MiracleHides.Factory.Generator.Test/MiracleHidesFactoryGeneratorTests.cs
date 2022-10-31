@@ -1,5 +1,6 @@
 namespace MiracleHides.Factory.Generator.Test
 {
+    using System.Threading.Tasks;
     using Xunit;
     using MiracleHides.Factory.Generator;
     using MiracleHides.Factory.Generator.Contracts;
@@ -21,9 +22,9 @@ namespace MiracleHides.Factory.Generator.Test
         [InlineData("examples/crud/nestjs.json")]
         [InlineData("examples/crud/nodejs.json")]
         [InlineData("examples/crud/python.json")]
-        public void GenerateSourceCode(string jsonFileName)
+        public async Task GenerateSourceCode(string jsonFileName)
         {
-            var archive = this.generator.Generate(jsonFileName);
+            var archive = await this.generator.Generate(jsonFileName);
             Assert.NotNull(archive);
         }
     }

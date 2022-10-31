@@ -3,6 +3,7 @@
     using Xunit;
     using System.IO;
     using MiracleHides.Factory.Generator.Contracts.LexicalAnalysis;
+    using System.Threading.Tasks;
 
     /// <summary>
     ///     Tests for <see cref="ILexer"/>.
@@ -31,10 +32,10 @@
         [InlineData("examples/crud/nestjs.json")]
         [InlineData("examples/crud/nodejs.json")]
         [InlineData("examples/crud/python.json")]
-        public void Execute(string jsonFileName)
+        public async Task Execute(string jsonFileName)
         {
             string content = File.ReadAllText(jsonFileName);
-            this.lexer.Execute(content);
+            await this.lexer.Execute(content);
         }
     }
 }
