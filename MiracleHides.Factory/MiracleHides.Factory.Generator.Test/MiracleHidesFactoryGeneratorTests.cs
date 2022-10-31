@@ -9,19 +9,21 @@ namespace MiracleHides.Factory.Generator.Test
     /// </summary>
     public class MiracleHidesFactoryGeneratorTests
     {
-        [Fact]
-        public void MiracleHidesFactoryGenerator_implements_IMiracleHidesFactoryGenerator()
+        private readonly IMiracleHidesFactoryGenerator generator;
+
+        public MiracleHidesFactoryGeneratorTests(IMiracleHidesFactoryGenerator generator)
         {
-            var generator = new MiracleHidesFactoryGenerator();
-            Assert.IsAssignableFrom<IMiracleHidesFactoryGenerator>(generator);
+            this.generator = generator;
         }
 
         [Theory]
         [InlineData("examples/crud/csharp.json")]
+        [InlineData("examples/crud/nestjs.json")]
+        [InlineData("examples/crud/nodejs.json")]
+        [InlineData("examples/crud/python.json")]
         public void GenerateSourceCode(string jsonFileName)
         {
-            var generator = new MiracleHidesFactoryGenerator() as IMiracleHidesFactoryGenerator;
-            var archive = generator.Generate(jsonFileName);
+            var archive = this.generator.Generate(jsonFileName);
             Assert.NotNull(archive);
         }
     }
