@@ -1,4 +1,5 @@
 ﻿{
   "Language": "Python",
-  "Type": "Crud"
+  "Type": "Crud",
+  "folder": "test_service_folder"
 }

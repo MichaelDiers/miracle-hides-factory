@@ -1,14 +1,14 @@
-﻿namespace MiracleHides.Factory.Generator.LexicalAnalysis
+﻿namespace MiracleHides.Factory.Generator.Analysis
 {
     using System.Threading.Tasks;
-    using MiracleHides.Factory.Generator.Contracts.LexicalAnalysis;
+    using MiracleHides.Factory.Generator.Contracts.Analysis;
     using MiracleHides.Factory.Generator.Contracts.Models.JsonSpecification;
     using MiracleHides.Factory.Generator.Converter;
 
     /// <summary>
-    ///     Describes the operations of the lixical analysis.
+    ///     Describes the operations of the lexical analysis.
     /// </summary>
-    internal class Lexer : ILexer
+    internal class LexicalAnalysis : ILexicalAnalysis
     {
         /// <summary>
         ///     Execute the lexical analysis.

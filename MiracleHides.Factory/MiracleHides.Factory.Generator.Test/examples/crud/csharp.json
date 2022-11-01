@@ -1,4 +1,8 @@
 ﻿{
   "language": "csharp",
-  "type": "crud"
+  "type": "crud",
+  "folder": "TestService",
+  "solutionName": "TestService",
+  "projectName": "TestService",
+  "testProjectName": "TestService.Tests"
 }

@@ -1,5 +1,6 @@
 ﻿namespace MiracleHides.Factory.Generator.Converter
 {
+    using System;
     using System.Text.Json;
     using MiracleHides.Factory.Generator.Contracts.Models.JsonSpecification;
     using MiracleHides.Factory.Generator.Models.JsonSpecification;
@@ -36,6 +37,19 @@
             if (value.Type == SpecificationType.None)
             {
                 throw new JsonException($"{nameof(Specification.Type)} is not set or None.");
+            }
+
+            var stringChecks = new []
+            {
+                (access: new Func<Specification, string>(spec => spec.Folder), name: nameof(Specification.Folder))
+            };
+
+            foreach (var check in stringChecks)
+            {
+                if (string.IsNullOrWhiteSpace(check.access(value)))
+                {
+                    throw new JsonException($"{check.name} is null or whitespace.");
+                }
             }
 
             return value;

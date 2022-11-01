@@ -12,6 +12,7 @@
         [Theory]
         [InlineData("Python", "None", "Language is not set or None")]
         [InlineData("Crud", "None", "Type is not set or None")]
+        [InlineData("test_service_folder", "", "Folder is null or whitespace")]
         public void DeserializeFailsDueToInvalidEnumValue(string oldValue, string newValue, string message)
         {
             var jsonFileName = "Converter/SpecificationJsonConverterTests.Deserialize.json";
@@ -40,13 +41,14 @@
         }
 
         [Theory]
-        [InlineData(Language.Python, SpecificationType.Crud)]
-        public void Serialize(Language language, SpecificationType type)
+        [InlineData(Language.Python, SpecificationType.Crud, "folder")]
+        public void Serialize(Language language, SpecificationType type, string folder)
         {
             var specification = new Specification
             {
                 Language = language,
-                Type = type
+                Type = type,
+                Folder = folder,
             };
 
             var serialized = JsonSerializer.Serialize(specification);
@@ -57,6 +59,7 @@
 
             Assert.Equal(language, deserialized.Language);
             Assert.Equal(type, deserialized.Type);
+            Assert.Equal(folder, deserialized.Folder);
         }
     }
 }

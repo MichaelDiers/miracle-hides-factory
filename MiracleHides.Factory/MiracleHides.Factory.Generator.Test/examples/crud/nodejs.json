@@ -1,4 +1,5 @@
 ﻿{
   "language": "nodejs",
-  "type": "crud"
+  "type": "crud",
+  "folder": "test-service"
 }
